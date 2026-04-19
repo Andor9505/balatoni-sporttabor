@@ -770,16 +770,122 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 640px) {
+  /* ─── RESPONSIVE TABLET ─── */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 5rem 1.25rem 4rem;
+      min-height: 100svh;
+    }
+
+    .hero__title {
+      font-size: clamp(3.5rem, 20vw, 6rem);
+    }
+
     .hero__price-tag {
       position: static;
       margin: 2rem auto 0;
       width: fit-content;
     }
 
-    .hero {
-      padding-bottom: 4rem;
+    .hero__cta-wrap {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .features__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .feature-card {
+      padding: 1.25rem 1rem;
+    }
+
+    .program__list {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .day-card__header {
+      padding: 0.75rem 1rem;
+    }
+
+    .signup__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .signup__card {
+      padding: 1.5rem 1.25rem;
+    }
+
+    .bank-box__value {
+      font-size: 0.88rem;
+    }
+
+    .quota-box {
+      padding: 0.75rem 1rem;
+    }
+
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+      padding: 1.25rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .features,
+    .program,
+    .signup,
+    .contact {
+      padding: 3rem 0;
+    }
+  }
+
+  /* ─── RESPONSIVE MOBILE ─── */
+  @media (max-width: 400px) {
+    .features__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__tags {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero__tags span {
+      width: 100%;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .signup__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quota-box {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quota-divider {
+      width: 40px;
+      height: 1px;
     }
   }
 </style>
