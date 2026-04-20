@@ -1,0 +1,474 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Jelentkezés – Balatoni Sport Tábor">
+
+  <section class="form-hero">
+    <div class="form-hero__content">
+      <a href="/" class="back-link">← Vissza a főoldalra</a>
+      <div class="hero-badge">Július 6–10.</div>
+      <h1 class="hero-title">Jelentkezési<br />Lap</h1>
+      <p class="hero-sub">Balatoni Sport Tábor · Balatonboglár</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="container">
+
+      <div id="success-msg" class="success-box" style="display:none;">
+        <div class="success-icon">✅</div>
+        <h2>Sikeres jelentkezés!</h2>
+        <p>Az adatokat elküldtük. Hamarosan felvesszük a kapcsolatot!</p>
+        <a href="/" class="btn btn--accent">Vissza a főoldalra</a>
+      </div>
+
+      <form id="reg-form" novalidate>
+
+        <!-- GYERMEK ADATAI -->
+        <div class="form-card">
+          <div class="form-card__header">
+            <span class="form-card__icon">👦</span>
+            <h2>Gyermek adatai</h2>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="gyermekNev">Teljes név *</label>
+              <input type="text" id="gyermekNev" name="gyermekNev" placeholder="Pl. Kiss Péter" required />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+            <div class="field">
+              <label for="szuletesiDatum">Születési dátum *</label>
+              <input type="date" id="szuletesiDatum" name="szuletesiDatum" required />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+            <div class="field field--full">
+              <label for="lakcim">Lakcím *</label>
+              <input type="text" id="lakcim" name="lakcim" placeholder="Pl. 1234 Budapest, Fő utca 1." required />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+            <div class="field">
+              <label for="tajSzam">TAJ-szám *</label>
+              <input type="text" id="tajSzam" name="tajSzam" placeholder="000 000 000" required maxlength="11" />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SZÜLŐ ADATAI -->
+        <div class="form-card">
+          <div class="form-card__header">
+            <span class="form-card__icon">👨‍👧</span>
+            <h2>Szülő / gondviselő adatai</h2>
+          </div>
+          <div class="form-grid">
+            <div class="field field--full">
+              <label for="szuloNev">Teljes név *</label>
+              <input type="text" id="szuloNev" name="szuloNev" placeholder="Pl. Kiss János" required />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+            <div class="field">
+              <label for="telefon1">Telefonszám 1 *</label>
+              <input type="tel" id="telefon1" name="telefon1" placeholder="+36 30 123 4567" required />
+              <span class="field-error">Kötelező mező</span>
+            </div>
+            <div class="field">
+              <label for="telefon2">Telefonszám 2 (opcionális)</label>
+              <input type="tel" id="telefon2" name="telefon2" placeholder="+36 20 123 4567" />
+            </div>
+            <div class="field field--full">
+              <label for="email">E-mail cím *</label>
+              <input type="email" id="email" name="email" placeholder="pelda@email.hu" required />
+              <span class="field-error">Érvényes e-mail cím szükséges</span>
+            </div>
+            <div class="field field--full">
+              <label for="szuloLakcim">Lakcím (ha eltér a gyermekétől)</label>
+              <input type="text" id="szuloLakcim" name="szuloLakcim" placeholder="Pl. 1234 Budapest, Fő utca 2." />
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="form-footer">
+          <p class="form-note">* Kötelezően kitöltendő mezők</p>
+          <button type="submit" class="btn btn--submit" id="submit-btn">
+            <span id="btn-text">📨 Jelentkezés elküldése</span>
+            <span id="btn-loading" style="display:none;">⏳ Küldés...</span>
+          </button>
+          <div id="error-msg" class="error-box" style="display:none;">
+            ❌ Hiba történt! Kérjük próbáld újra vagy vedd fel a kapcsolatot velünk.
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- KAPCSOLAT -->
+  <section class="contact-mini">
+    <div class="container">
+      <p>Kérdés esetén hívj minket:</p>
+      <div class="contact-mini__grid">
+        <a href="tel:+36307080078" class="contact-chip">📞 Medve Mónika – 06 30 / 708-0078</a>
+        <a href="tel:+36209776255" class="contact-chip">📞 Tóth Péter – 06 20 / 977-6255</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  const form = document.getElementById('reg-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnLoading = document.getElementById('btn-loading');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validálás
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(input => {
+      if (!input.value.trim()) {
+        input.classList.add('invalid');
+        valid = false;
+      } else {
+        input.classList.remove('invalid');
+      }
+    });
+
+    const emailInput = document.getElementById('email');
+    if (emailInput.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+      emailInput.classList.add('invalid');
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Küldés
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtn.disabled = true;
+    errorMsg.style.display = 'none';
+
+    const data = {
+      gyermekNev: document.getElementById('gyermekNev').value,
+      szuletesiDatum: document.getElementById('szuletesiDatum').value,
+      lakcim: document.getElementById('lakcim').value,
+      tajSzam: document.getElementById('tajSzam').value,
+      szuloNev: document.getElementById('szuloNev').value,
+      telefon1: document.getElementById('telefon1').value,
+      telefon2: document.getElementById('telefon2').value,
+      email: document.getElementById('email').value,
+      szuloLakcim: document.getElementById('szuloLakcim').value,
+    };
+
+    try {
+      const res = await fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        throw new Error(json.error);
+      }
+    } catch (err) {
+      errorMsg.style.display = 'block';
+      btnText.style.display = 'inline';
+      btnLoading.style.display = 'none';
+      submitBtn.disabled = false;
+    }
+  });
+
+  // TAJ formázás
+  document.getElementById('tajSzam').addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 3) v = v.slice(0,3) + ' ' + v.slice(3);
+    if (v.length > 7) v = v.slice(0,7) + ' ' + v.slice(7);
+    e.target.value = v.slice(0,11);
+  });
+</script>
+
+<style>
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ─── HERO ─── */
+  .form-hero {
+    background: linear-gradient(155deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-bright) 100%);
+    padding: 3rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .form-hero__content {
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover { color: var(--white); }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  /* ─── FORM SECTION ─── */
+  .form-section {
+    padding: 3rem 0 4rem;
+    background: var(--blue-light);
+  }
+
+  /* ─── FORM CARD ─── */
+  .form-card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 2px 20px rgba(10, 61, 98, 0.08);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .form-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--blue-deep);
+    color: var(--white);
+    padding: 1.25rem 1.75rem;
+  }
+
+  .form-card__icon { font-size: 1.4rem; }
+
+  .form-card__header h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    padding: 1.75rem;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field--full { grid-column: 1 / -1; }
+
+  .field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue-deep);
+  }
+
+  .field input {
+    border: 1.5px solid #d0e0ec;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: #f8fbff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+  }
+
+  .field input:focus {
+    border-color: var(--blue-mid);
+    box-shadow: 0 0 0 3px rgba(26, 111, 168, 0.12);
+    background: var(--white);
+  }
+
+  .field input.invalid {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+  }
+
+  .field-error {
+    font-size: 0.78rem;
+    color: #e74c3c;
+    display: none;
+  }
+
+  .field input.invalid ~ .field-error { display: block; }
+
+  /* ─── FOOTER ─── */
+  .form-footer {
+    text-align: center;
+    padding-top: 0.5rem;
+  }
+
+  .form-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .btn--submit {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(245, 166, 35, 0.35);
+  }
+
+  .btn--submit:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.45);
+  }
+
+  .btn--submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+  /* ─── SUCCESS / ERROR ─── */
+  .success-box {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 20px rgba(10,61,98,0.08);
+  }
+
+  .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  .success-box h2 {
+    color: var(--blue-deep);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .success-box p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn--accent {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .error-box {
+    margin-top: 1rem;
+    background: #fff0f0;
+    border: 1px solid #fcc;
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    color: #c0392b;
+    font-size: 0.9rem;
+  }
+
+  /* ─── CONTACT MINI ─── */
+  .contact-mini {
+    background: var(--blue-deep);
+    padding: 2.5rem 0;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .contact-mini p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-mini__grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-chip {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+
+  .contact-chip:hover { background: rgba(255,255,255,0.18); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+
+    .field--full { grid-column: 1; }
+
+    .form-hero { padding: 2rem 1.25rem 3rem; }
+
+    .btn--submit {
+      width: 100%;
+      padding: 1rem;
+    }
+
+    .contact-mini__grid { flex-direction: column; align-items: center; }
+  }
+</style>
