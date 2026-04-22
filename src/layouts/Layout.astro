@@ -17,6 +17,15 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+
+    <!-- SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hu_HU" />
+    <link rel="canonical" href="https://balatoni-sporttabor.pages.dev/" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,9 +53,7 @@ const {
         padding: 0;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         font-family: var(--font-body);
@@ -60,18 +67,235 @@ const {
         color: var(--white);
       }
 
-      img {
-        max-width: 100%;
-        display: block;
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+
+      /* ── COOKIE OVERLAY ── */
+      #cookie-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 30, 50, 0.72);
+        backdrop-filter: blur(4px);
+        z-index: 9998;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 1rem;
+        transition: opacity 0.35s ease;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      #cookie-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      #cookie-banner {
+        background: var(--white);
+        border-radius: 20px 20px 16px 16px;
+        max-width: 680px;
+        width: 100%;
+        box-shadow: 0 -4px 40px rgba(0,0,0,0.2);
+        overflow: hidden;
+        transform: translateY(0);
+        transition: transform 0.35s ease;
+        margin-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      #cookie-overlay.hidden #cookie-banner {
+        transform: translateY(40px);
+      }
+
+      .cookie-banner__top {
+        background: var(--blue-deep);
+        padding: 1.1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .cookie-banner__icon {
+        font-size: 1.5rem;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+
+      .cookie-banner__top h2 {
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .cookie-banner__body {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .cookie-banner__body p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+      }
+
+      .cookie-banner__body p:last-of-type {
+        margin-bottom: 0;
+      }
+
+      .cookie-banner__body a {
+        color: var(--blue-mid);
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .cookie-types {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin: 0.75rem 0;
+      }
+
+      .cookie-type-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: var(--blue-light);
+        border-radius: 999px;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--blue-deep);
+      }
+
+      .cookie-type-pill .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--blue-mid);
+        flex-shrink: 0;
+      }
+
+      .cookie-type-pill .dot--green { background: #16a34a; }
+
+      .cookie-banner__actions {
+        display: flex;
+        gap: 0.75rem;
+        padding: 0 1.5rem 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .cookie-btn {
+        flex: 1;
+        min-width: 140px;
+        padding: 0.8rem 1.25rem;
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        transition: transform 0.12s, box-shadow 0.12s;
+        text-align: center;
+      }
+
+      .cookie-btn:hover { transform: translateY(-1px); }
+
+      .cookie-btn--accept {
+        background: var(--accent);
+        color: var(--white);
+        box-shadow: 0 4px 14px rgba(245,166,35,0.35);
+      }
+
+      .cookie-btn--accept:hover {
+        box-shadow: 0 6px 20px rgba(245,166,35,0.45);
+      }
+
+      .cookie-btn--necessary {
+        background: var(--blue-light);
+        color: var(--blue-deep);
+      }
+
+      /* ── DESKTOP: banner középre ── */
+      @media (min-width: 640px) {
+        #cookie-overlay {
+          align-items: center;
+          padding: 2rem;
+        }
+
+        #cookie-banner {
+          border-radius: 20px;
+          margin-bottom: 0;
+        }
+
+        .cookie-banner__actions {
+          flex-wrap: nowrap;
+        }
+      }
+
+      /* ── SMALL MOBILE ── */
+      @media (max-width: 380px) {
+        .cookie-banner__body { padding: 1rem; }
+        .cookie-banner__actions { padding: 0 1rem 1rem; flex-direction: column; }
+        .cookie-btn { min-width: unset; width: 100%; }
       }
     </style>
   </head>
   <body>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-overlay" role="dialog" aria-modal="true" aria-label="Cookie beállítások">
+      <div id="cookie-banner">
+        <div class="cookie-banner__top">
+          <span class="cookie-banner__icon">🍪</span>
+          <h2>Süti (cookie) beállítások</h2>
+        </div>
+        <div class="cookie-banner__body">
+          <p>
+            Ez a weboldal sütiket (cookie-kat) használ a megfelelő működés biztosítása érdekében.
+            Az „Elfogadom" gombra kattintva hozzájárul az összes süti használatához.
+          </p>
+          <div class="cookie-types">
+            <span class="cookie-type-pill"><span class="dot dot--green"></span> Szükséges (mindig aktív)</span>
+            <span class="cookie-type-pill"><span class="dot"></span> Cloudflare biztonsági sütik</span>
+          </div>
+          <p>
+            Ez az oldal <strong>nem használ</strong> marketing vagy nyomkövető sütiket.
+            Bővebben: <a href="/adatvedelem#cookie">Adatvédelmi tájékoztató</a>
+          </p>
+        </div>
+        <div class="cookie-banner__actions">
+          <button class="cookie-btn cookie-btn--necessary" id="cookie-necessary" type="button">
+            Csak szükséges
+          </button>
+          <button class="cookie-btn cookie-btn--accept" id="cookie-accept" type="button">
+            ✓ Elfogadom az összeset
+          </button>
+        </div>
+      </div>
+    </div>
+
     <slot />
+
+    <script>
+      (function() {
+        const overlay = document.getElementById('cookie-overlay');
+        const consent = localStorage.getItem('cookie-consent');
+
+        if (consent) {
+          overlay.classList.add('hidden');
+          setTimeout(() => overlay.remove(), 400);
+        }
+
+        function acceptCookies(type) {
+          localStorage.setItem('cookie-consent', type);
+          localStorage.setItem('cookie-consent-date', new Date().toISOString());
+          overlay.classList.add('hidden');
+          setTimeout(() => overlay.remove(), 400);
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', () => acceptCookies('all'));
+        document.getElementById('cookie-necessary').addEventListener('click', () => acceptCookies('necessary'));
+      })();
+    </script>
+
   </body>
 </html>

@@ -1,0 +1,583 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Adatvédelmi tájékoztató – Balatoni Sport Tábor">
+
+  <section class="page-hero">
+    <div class="page-hero__content">
+      <a href="/" class="back-link">← Vissza a főoldalra</a>
+      <div class="hero-badge">Jogi információk</div>
+      <h1 class="hero-title">Adatvédelmi<br />tájékoztató</h1>
+      <p class="hero-sub">Utoljára frissítve: 2025. április</p>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <div class="container">
+
+      <!-- TARTALOM NAVIGÁCIÓ -->
+      <nav class="toc">
+        <p class="toc__title">Tartalom</p>
+        <a href="#szolgaltato">1. Szolgáltató adatai</a>
+        <a href="#adatok">2. Kezelt személyes adatok</a>
+        <a href="#cél">3. Adatkezelés célja</a>
+        <a href="#alap">4. Jogalap</a>
+        <a href="#tarolás">5. Adattárolás és biztonság</a>
+        <a href="#harmadik">6. Harmadik felek</a>
+        <a href="#jogok">7. Az érintett jogai</a>
+        <a href="#cookie">8. Cookie tájékoztató</a>
+        <a href="#kapcsolat">9. Kapcsolat</a>
+      </nav>
+
+      <!-- 1. SZOLGÁLTATÓ -->
+      <div class="doc-card" id="szolgaltato">
+        <div class="doc-card__header">
+          <span>1.</span> Szolgáltató adatai
+        </div>
+        <div class="doc-card__body">
+          <div class="info-grid">
+            <div class="info-row">
+              <span class="info-label">Név</span>
+              <span class="info-value">Tóth Péter</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Lakcím</span>
+              <span class="info-value">4030 Debrecen, Köszméte utca 31.</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">E-mail</span>
+              <span class="info-value">tothpeter.fitness@gmail.com</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Telefonszám</span>
+              <span class="info-value">+36 20 / 977-6255</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Weboldal</span>
+              <span class="info-value">balatoni-sporttabor.pages.dev</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Tárhelyszolgáltató</span>
+              <span class="info-value">Cloudflare, Inc. · 101 Townsend St, San Francisco, CA 94107, USA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. KEZELT ADATOK -->
+      <div class="doc-card" id="adatok">
+        <div class="doc-card__header">
+          <span>2.</span> Kezelt személyes adatok
+        </div>
+        <div class="doc-card__body">
+          <p>A jelentkezési űrlap kitöltésekor az alábbi személyes adatokat kezeljük:</p>
+
+          <div class="data-group">
+            <p class="data-group__title">👦 Gyermek adatai</p>
+            <ul>
+              <li>Teljes név</li>
+              <li>Születési dátum</li>
+              <li>Lakcím</li>
+              <li>TAJ-szám (egészségbiztosítási azonosító)</li>
+            </ul>
+          </div>
+
+          <div class="data-group">
+            <p class="data-group__title">👨‍👧 Szülő / gondviselő adatai</p>
+            <ul>
+              <li>Teljes név</li>
+              <li>Telefonszám (1–2 db)</li>
+              <li>E-mail cím</li>
+              <li>Lakcím (amennyiben eltér a gyermekétől)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. CÉL -->
+      <div class="doc-card" id="cél">
+        <div class="doc-card__header">
+          <span>3.</span> Adatkezelés célja
+        </div>
+        <div class="doc-card__body">
+          <p>A megadott személyes adatokat kizárólag az alábbi célokra használjuk:</p>
+          <ul class="styled-list">
+            <li>A sporttábori részvétel megszervezése és adminisztrációja</li>
+            <li>Kapcsolattartás a szülőkkel / gondviselőkkel a tábor előtt és alatt</li>
+            <li>Egészségügyi szempontból szükséges azonosítás (TAJ-szám)</li>
+            <li>Szállás és étkezés megszervezése</li>
+          </ul>
+          <div class="info-box">
+            Az adatokat <strong>nem adjuk tovább</strong> harmadik félnek, és nem használjuk marketing célokra.
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. JOGALAP -->
+      <div class="doc-card" id="alap">
+        <div class="doc-card__header">
+          <span>4.</span> Adatkezelés jogalapja
+        </div>
+        <div class="doc-card__body">
+          <p>Az adatkezelés jogalapja az <strong>érintett önkéntes hozzájárulása</strong> (GDPR 6. cikk (1) bekezdés a) pont), amelyet a jelentkezési űrlap beküldésével ad meg.</p>
+          <p style="margin-top:1rem;">A hozzájárulás bármikor visszavonható, a visszavonás azonban nem érinti a visszavonás előtti adatkezelés jogszerűségét.</p>
+        </div>
+      </div>
+
+      <!-- 5. TÁROLÁS -->
+      <div class="doc-card" id="tarolás">
+        <div class="doc-card__header">
+          <span>5.</span> Adattárolás és biztonság
+        </div>
+        <div class="doc-card__body">
+          <ul class="styled-list">
+            <li>A jelentkezési adatok e-mailben kerülnek továbbításra a szervező részére, és <strong>nem tárolódnak adatbázisban</strong>.</li>
+            <li>Az adatokat a tábor lezárulta után, legkésőbb <strong>2025. augusztus 31-ig</strong> töröljük.</li>
+            <li>Az e-mail küldéshez a <strong>Brevo (Sendinblue) SaaS szolgáltatást</strong> vesszük igénybe (Brevo SAS, 55 rue d'Amsterdam, 75008 Párizs, Franciaország).</li>
+            <li>A weboldal a <strong>Cloudflare Pages</strong> platformon fut, amely ISO 27001 tanúsítvánnyal rendelkezik.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. HARMADIK FELEK -->
+      <div class="doc-card" id="harmadik">
+        <div class="doc-card__header">
+          <span>6.</span> Harmadik felek
+        </div>
+        <div class="doc-card__body">
+          <div class="third-party-card">
+            <p class="third-party-card__name">☁️ Cloudflare, Inc.</p>
+            <p>Tárhelyszolgáltató. A weboldal fájljait és a beérkező kéréseket kezeli. Adatvédelmi tájékoztató: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">cloudflare.com/privacypolicy</a></p>
+          </div>
+          <div class="third-party-card">
+            <p class="third-party-card__name">📧 Brevo (Sendinblue)</p>
+            <p>E-mail küldési szolgáltatás. A beküldött jelentkezési adatokat e-mailben továbbítja a szervező részére. Adatvédelmi tájékoztató: <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank">brevo.com/legal/privacypolicy</a></p>
+          </div>
+          <div class="third-party-card">
+            <p class="third-party-card__name">🔤 Google Fonts</p>
+            <p>Betűtípusok betöltéséhez. Betöltéskor az IP-cím átkerülhet a Google szerverére. Adatvédelmi tájékoztató: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. JOGOK -->
+      <div class="doc-card" id="jogok">
+        <div class="doc-card__header">
+          <span>7.</span> Az érintett jogai
+        </div>
+        <div class="doc-card__body">
+          <p>A GDPR alapján Önnek joga van:</p>
+          <ul class="styled-list">
+            <li><strong>Hozzáférési jog:</strong> tájékoztatást kérni a kezelt adatairól</li>
+            <li><strong>Helyesbítési jog:</strong> pontatlan adatok javítását kérni</li>
+            <li><strong>Törlési jog („elfeledtetéshez való jog"):</strong> adatai törlését kérni</li>
+            <li><strong>Adathordozhatóság joga:</strong> adatait géppel olvasható formátumban megkapni</li>
+            <li><strong>Tiltakozás joga:</strong> az adatkezelés ellen tiltakozni</li>
+          </ul>
+          <div class="info-box">
+            Jogai érvényesítéséhez írjon a <strong>tothpeter.fitness@gmail.com</strong> e-mail címre. Panasszal a <strong>Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH)</strong> is fordulhat: <a href="https://naih.hu" target="_blank">naih.hu</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. COOKIE -->
+      <div class="doc-card" id="cookie">
+        <div class="doc-card__header">
+          <span>8.</span> Cookie (süti) tájékoztató
+        </div>
+        <div class="doc-card__body">
+          <p>A weboldal az alábbi sütiket használja:</p>
+
+          <div class="cookie-table">
+            <div class="cookie-row cookie-row--header">
+              <span>Típus</span>
+              <span>Név</span>
+              <span>Cél</span>
+              <span>Lejárat</span>
+            </div>
+            <div class="cookie-row">
+              <span><span class="badge badge--green">Szükséges</span></span>
+              <span>cf_clearance</span>
+              <span>Cloudflare biztonsági ellenőrzés</span>
+              <span>1 nap</span>
+            </div>
+            <div class="cookie-row">
+              <span><span class="badge badge--green">Szükséges</span></span>
+              <span>__cf_bm</span>
+              <span>Cloudflare bot-védelem</span>
+              <span>30 perc</span>
+            </div>
+          </div>
+
+          <div class="info-box" style="margin-top: 1.25rem;">
+            Ez a weboldal <strong>nem használ</strong> marketing, analitikai vagy követési sütiket. A fenti sütik a tárhelyszolgáltató (Cloudflare) által automatikusan elhelyezett, technikailag szükséges sütik.
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. KAPCSOLAT -->
+      <div class="doc-card" id="kapcsolat">
+        <div class="doc-card__header">
+          <span>9.</span> Kapcsolat
+        </div>
+        <div class="doc-card__body">
+          <p>Adatvédelmi kérdésekkel kapcsolatban forduljon hozzánk:</p>
+          <div class="info-grid" style="margin-top:1rem;">
+            <div class="info-row">
+              <span class="info-label">Adatkezelő</span>
+              <span class="info-value">Tóth Péter</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">E-mail</span>
+              <span class="info-value"><a href="mailto:tothpeter.fitness@gmail.com">tothpeter.fitness@gmail.com</a></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Telefon</span>
+              <span class="info-value"><a href="tel:+36209776255">+36 20 / 977-6255</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Balatoni Sport Tábor &nbsp;·&nbsp; Tóth Péter &nbsp;·&nbsp; <a href="/adatvedelem" style="color:rgba(255,255,255,0.55);">Adatvédelmi tájékoztató</a></p>
+  </footer>
+
+</Layout>
+
+<style>
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ─── HERO ─── */
+  .page-hero {
+    background: linear-gradient(155deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-bright) 100%);
+    padding: 3rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .page-hero__content {
+    max-width: 860px;
+    margin: 0 auto;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    display: inline-block;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover { color: var(--white); }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    opacity: 0.7;
+  }
+
+  /* ─── DOC SECTION ─── */
+  .doc-section {
+    padding: 3rem 0 4rem;
+    background: var(--blue-light);
+  }
+
+  /* ─── TOC ─── */
+  .toc {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 16px rgba(10,61,98,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .toc__title {
+    font-weight: 700;
+    color: var(--blue-deep);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .toc a {
+    font-size: 0.9rem;
+    color: var(--blue-mid);
+    text-decoration: none;
+    transition: color 0.15s;
+    padding: 0.15rem 0;
+  }
+
+  .toc a:hover { color: var(--blue-deep); text-decoration: underline; }
+
+  /* ─── DOC CARD ─── */
+  .doc-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(10,61,98,0.07);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    scroll-margin-top: 2rem;
+  }
+
+  .doc-card__header {
+    background: var(--blue-deep);
+    color: var(--white);
+    padding: 1rem 1.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .doc-card__header span:first-child {
+    opacity: 0.5;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .doc-card__body {
+    padding: 1.75rem;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+  }
+
+  .doc-card__body p + p { margin-top: 0.75rem; }
+
+  /* ─── INFO GRID ─── */
+  .info-grid { display: flex; flex-direction: column; gap: 0; }
+
+  .info-row {
+    display: flex;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--blue-light);
+    align-items: flex-start;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-label {
+    min-width: 160px;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 0.1rem;
+  }
+
+  .info-value {
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.93rem;
+  }
+
+  /* ─── DATA GROUPS ─── */
+  .data-group {
+    background: var(--blue-light);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .data-group__title {
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .data-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .data-group ul li::before {
+    content: "· ";
+    color: var(--blue-mid);
+    font-weight: 700;
+  }
+
+  /* ─── STYLED LIST ─── */
+  .styled-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .styled-list li {
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .styled-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--blue-mid);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  /* ─── INFO BOX ─── */
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid var(--blue-mid);
+    border-radius: 0 8px 8px 0;
+    padding: 0.9rem 1.2rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--blue-deep);
+  }
+
+  .info-box a { color: var(--blue-mid); }
+
+  /* ─── THIRD PARTY CARDS ─── */
+  .third-party-card {
+    border: 1px solid #d0e8f7;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .third-party-card:last-child { margin-bottom: 0; }
+
+  .third-party-card__name {
+    font-weight: 700;
+    color: var(--blue-deep);
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .third-party-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .third-party-card a { color: var(--blue-mid); }
+
+  /* ─── COOKIE TABLE ─── */
+  .cookie-table {
+    border: 1px solid #d0e8f7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1rem;
+    font-size: 0.86rem;
+  }
+
+  .cookie-row {
+    display: grid;
+    grid-template-columns: 130px 160px 1fr 90px;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #e8f4fd;
+    align-items: center;
+  }
+
+  .cookie-row:last-child { border-bottom: none; }
+
+  .cookie-row--header {
+    background: var(--blue-deep);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .badge--green {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--blue-deep);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .info-label { min-width: 110px; font-size: 0.75rem; }
+    .doc-card__body { padding: 1.25rem; }
+    .toc { padding: 1.25rem; }
+    .page-hero { padding: 2rem 1.25rem 3rem; }
+
+    .cookie-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.25rem;
+    }
+
+    .cookie-row--header span:nth-child(3),
+    .cookie-row--header span:nth-child(4),
+    .cookie-row span:nth-child(3),
+    .cookie-row span:nth-child(4) {
+      grid-column: 1 / -1;
+      font-size: 0.8rem;
+    }
+  }
+</style>
